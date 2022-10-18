@@ -1,41 +1,22 @@
 import Player from '@vimeo/player';
-import lodash from 'lodash.throttle';
+import lodashThrottle from 'lodash.throttle';
 
 const iframe = document.querySelector('iframe');
 const player = new Player(iframe);
 
-player.on('timeupdate', onPlay);
+const LOCALSTORAGE_KEY = 'videoplayer-current-time';
+
+player.on('timeupdate', lodashThrottle(onPlay, 1000));
 
 function onPlay(evt) {
+  localStorage.setItem(LOCALSTORAGE_KEY, evt.seconds);
   console.log(evt);
-  localStorage.setItem('videoplayer-current-time', evt.seconds);
 }
 
-const getValue = localStorage.getItem('videoplayer-current-time');
+const getValue = localStorage.getItem(LOCALSTORAGE_KEY);
 console.log(getValue);
 if (getValue === null || getValue === undefined) {
   return;
 } else {
   player.setCurrentTime(getValue);
 }
-
-// import Player from '@vimeo/player';
-
-// const iframe = document.querySelector('iframe');
-// const player = new Player(iframe);
-
-// const STORAGE_KEY = 'videoplayer-current-time';
-
-// player.on('timeupdate', onPlay);
-
-// function onPlay(evt) {
-//   localStorage.setItem(STORAGE_KEY, evt.seconds);
-// }
-
-// const getStorageValue = localStorage.getItem(STORAGE_KEY);
-
-// if (getStorageValue === null || getStorageValue === undefined) {
-//   return;
-// } else {
-//   player.setCurrentTime(getStorageValue);
-// }
