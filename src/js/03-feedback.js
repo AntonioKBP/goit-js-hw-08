@@ -74,15 +74,8 @@ populateTextareaOutput();
 // const formData = {};
 
 function onFormInput(evt) {
-  const message = ([evt.target.name] = evt.target.value);
-  console.log(message);
-  localStorage.setItem(STORAGE_KEY, message);
-  console.log(localStorage);
-}
-
-function populateTextareaOutput() {
-  const savedMessage = localStorage.getItem(STORAGE_KEY);
-  if (savedMessage) {
-    form.value = savedMessage;
-  }
+  // const message = ([evt.target.name] = evt.target.value);
+  // console.log(message);
+  // localStorage.setItem(STORAGE_KEY, message);
+  // console.log(localStorage);
 }
