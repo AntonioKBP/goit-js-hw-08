@@ -1,3 +1,6 @@
+import '../css/common.css';
+import '../css/03-feedback.css';
+
 import lodashThrottle from 'lodash.throttle';
 
 const STORAGE_KEY = 'feedback-form-state';
