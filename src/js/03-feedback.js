@@ -19,11 +19,12 @@ refs.form.addEventListener('submit', e => {
   e.preventDefault();
   e.currentTarget.reset();
   localStorage.removeItem(STORAGE_KEY);
+  console.log(formData);
 });
 
 function onFormInput(evt) {
   formData[evt.target.name] = evt.target.value;
-  console.log(formData);
+  // console.log(formData);
   localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
 }
 
