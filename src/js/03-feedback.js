@@ -65,17 +65,31 @@ const button = document.querySelector('[type="submit"]');
 
 form.addEventListener('submit', e => {
   e.preventDefault();
+  e.currentTarget.reset();
 });
 
 form.addEventListener('input', lodashThrottle(onFormInput, 500));
 
 populateTextareaOutput();
 
-// const formData = {};
+const formData = {};
 
 function onFormInput(evt) {
+  // console.log(evt.target.value);
+  formData[evt.target.name] = evt.target.value;
+  // console.log(formData);
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
   // const message = ([evt.target.name] = evt.target.value);
   // console.log(message);
   // localStorage.setItem(STORAGE_KEY, message);
   // console.log(localStorage);
+}
+
+function populateTextareaOutput() {
+  const savedMessage = localStorage.getItem(STORAGE_KEY);
+  // console.log(savedMessage);
+  if (savedMessage) {
+    form.target.value = JSON.parse(savedMessage);
+    console.log(form.target.value);
+  }
 }
