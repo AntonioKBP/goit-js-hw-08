@@ -1,16 +1,11 @@
-// Add imports above this line
 import { galleryItems } from './gallery-items';
-// Change code below this line
 import SimpleLightbox from 'simplelightbox';
-// Дополнительный импорт стилей
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
 console.log(galleryItems);
 
 const galleryMainDiv = document.querySelector('.gallery');
-// console.log(galleryMainDiv);
 const galleryMarkup = createGalleryMarkup(galleryItems);
-// console.log(galleryMarkup);
 
 galleryMainDiv.insertAdjacentHTML('beforeend', galleryMarkup);
 galleryMainDiv.addEventListener('click', onPictureClick);
@@ -27,7 +22,6 @@ function createGalleryMarkup(gallery) {
 
 function onPictureClick(event) {
   event.preventDefault();
-  // console.log(event.target);
   if (event.target.tagName !== 'IMG') return;
   console.log(event);
 }
