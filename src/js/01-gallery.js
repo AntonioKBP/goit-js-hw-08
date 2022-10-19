@@ -26,7 +26,7 @@ function onPictureClick(event) {
   console.log(event);
 }
 
-var lightbox = new SimpleLightbox('.gallery__item', {
+const lightbox = new SimpleLightbox('.gallery__item', {
   captionsData: 'alt',
   captionDelay: 250,
 });
